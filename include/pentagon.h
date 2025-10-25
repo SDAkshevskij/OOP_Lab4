@@ -9,6 +9,7 @@ class Pentagon : public Figure<T> {
 public:
     Pentagon() : Figure<T>(5) {}
     
+    
     Pentagon(const std::initializer_list<Point<T>> &t) : Figure<T>(t) {
         if(t.size() != 5) {
             throw std::length_error("Expected 5 points!");

@@ -29,6 +29,7 @@ class Figure {
         }
 
         Figure(const Figure<T>& other) : Figure<T>(other.pointsAmo) {
+
             for (int i = 0; i < pointsAmo; i++) {
                 points[i] = other.points[i];
             }
@@ -42,6 +43,7 @@ class Figure {
 
         virtual ~Figure() noexcept {}
 
+
         virtual std::string to_string() const  {return "";}
         virtual std::string get_name() const  {return "";}
         virtual std::istream& read_from_stream(std::istream &is) {return is;}
@@ -50,10 +52,12 @@ class Figure {
         Point<T> calc_the_center_of_rotation() {
             T xSum = 0;
             T ySum = 0;
+
             for (int i = 0; i < pointsAmo; i++) {
                 xSum += points[i].getX();
                 ySum += points[i].getY();
             }
+
             return Point<T>(xSum / pointsAmo, ySum / pointsAmo);
         }
 
@@ -75,9 +79,11 @@ class Figure {
 
         bool operator==(const Figure<T>& other) const {
             if (this == &other) return true;
+
             if(pointsAmo != other.pointsAmo) {
                 return false;
             }
+        
             for (int i = 0; i < pointsAmo; i++) {
                 if (points[i] != other.points[i]) {
                     return false;
@@ -99,24 +105,32 @@ class Figure {
             return this->calc_area();
         }
 
+
+        
     protected:
         std::unique_ptr<Point<T>[]> points;
         int pointsAmo;
+
         Point<T> getCenterPoint() {
             double xSum = 0;
             double ySum = 0;
+
             for (int i = 0; i < pointsAmo; i++) {
                 xSum += points[i].getX();
                 ySum += points[i].getY();
             }
+        
             return Point<T>(xSum / pointsAmo, ySum / pointsAmo);
         }
 
         std::string vertexes_to_string() const {
             std::string res = "";
+
             for (int i = 0; i < pointsAmo; i++) {
                 res += "V" + std::to_string(i) + ": " + points[i].to_string() + " ";
             }
+
             return res;
         }
+
 };

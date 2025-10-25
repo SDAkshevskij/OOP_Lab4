@@ -1,5 +1,4 @@
 #pragma once 
-
 #include <stdlib.h>
 #include <string>
 #include <initializer_list>

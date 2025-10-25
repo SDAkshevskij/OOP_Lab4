@@ -15,11 +15,8 @@ int main(int argc, char** argv){
     array.addElem(pent, 1);
     array.calc_total_area();
     cout << array;
-    //cout << array << endl << endl;
-//
-    //cout << array.calc_total_area() << endl;
-//
-    //array.removeElem(1);
-    //
-    //cout << array;
+    cout << array << endl << endl;
+    cout << array.calc_total_area() << endl;
+    array.removeElem(1);
+    cout << array;
 }

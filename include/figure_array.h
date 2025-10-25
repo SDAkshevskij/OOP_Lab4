@@ -59,13 +59,13 @@ class FigureArray {
 
         void print_the_center_of_rotation() {
             for (int i = 0; i < elementsAmo; i++) {
-                std::cout << elements[i]->get_name() << " " << elements[i]->calc_the_center_of_rotation().to_string() << std::endl;
+                std::cout << this->elements[i]->get_name() << " " << this->elements[i]->calc_the_center_of_rotation().to_string() << std::endl;
             }
         }
 
         void print_the_area_of_each() {
             for (int i = 0; i < elementsAmo; i++) {
-                std::cout << elements[i]->get_name() << " " << elements[i]->calc_area() << std::endl;
+                std::cout << this->elements[i]->get_name() << " " << this->elements[i]->calc_area() << std::endl;
             }
         }
         
@@ -78,7 +78,7 @@ class FigureArray {
         }
         
         void removeElem(int index) {
-            std::shared_ptr<std::shared_ptr<T>[]> newElements = std::shared_ptr<std::shared_ptr<T>[]>(new std::shared_ptr<T>[elementsAmo - 1]);
+            auto newElements = std::shared_ptr<std::shared_ptr<T>[]>(new std::shared_ptr<T>[elementsAmo - 1]);
             for (int i = 0; i < index; i++) {
                 newElements[i] = std::move(elements[i]);
             }
@@ -90,7 +90,7 @@ class FigureArray {
         }
 
         void addElem(T *elem, int index) {
-            std::shared_ptr<std::shared_ptr<T>[]> newElements = std::shared_ptr<std::shared_ptr<T>[]>(new std::shared_ptr<T>[elementsAmo + 1]);
+            auto newElements = std::shared_ptr<std::shared_ptr<T>[]>(new std::shared_ptr<T>[elementsAmo + 1]);
             for (int i = 0; i < index; i++) {
                 newElements[i] = std::move(elements[i]);
             }

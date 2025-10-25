@@ -52,10 +52,12 @@ class Figure {
         Point<T> calc_the_center_of_rotation() {
             T xSum = 0;
             T ySum = 0;
+
             for (int i = 0; i < pointsAmo; i++) {
                 xSum += points[i].getX();
                 ySum += points[i].getY();
             }
+
             return Point<T>(xSum / pointsAmo, ySum / pointsAmo);
         }
 

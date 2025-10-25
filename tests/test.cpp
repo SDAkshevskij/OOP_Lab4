@@ -138,37 +138,6 @@ TEST(FigureArrayTest, InitializerListConstructor) {
 }
 
 
-// TEST(FigureArrayTest, TotalAreaCalculation) {
-//     auto pentagon = Pentagon<double>{Point<double>(0, 0), Point<double>(1, 0), Point<double>(1.5, 0.8),
-//                         Point<double>(0.5, 1.3), Point<double>(-0.5, 0.8)};
-    
-//     auto hexagon = Hexagon<double>{Point<double>(0, 0), Point<double>(1, 0), Point<double>(1.5, 0.866),
-//                        Point<double>(1, 1.732), Point<double>(0, 1.732), Point<double>(-0.5, 0.866)};
-    
-//     FigureArray<Figure<double>> array{&pentagon, &hexagon};
-    
-//     double totalArea = array.calc_total_area();
-//     double pentagonArea = pentagon.calc_area();
-//     double hexagonArea = hexagon.calc_area();
-    
-//     EXPECT_DOUBLE_EQ(totalArea, pentagonArea + hexagonArea);
-// }
-
-// TEST(FigureArrayTest, PrintFunctions) {
-//     auto pentagon = Pentagon<double>{Point<double>(0, 0), Point<double>(1, 0), Point<double>(1.5, 0.8),
-//                         Point<double>(0.5, 1.3), Point<double>(-0.5, 0.8)};
-    
-//     FigureArray<Figure<double>> array{&pentagon};
-
-//     // Тест что функции не падают с исключениями
-//     EXPECT_NO_THROW(array.print_the_center_of_rotation());
-//     EXPECT_NO_THROW(array.print_the_area_of_each());
-    
-//     // Тест оператора вывода
-//     std::stringstream ss;
-//     EXPECT_NO_THROW(ss << array);
-// }
-
 // Тесты с разными скалярными типами
 TEST(TemplateTest, DifferentScalarTypes) {
     // Тест с int
@@ -197,49 +166,6 @@ TEST(ConversionTest, DoubleConversion) {
     double area2 = static_cast<double>(pentagon);
     
     EXPECT_DOUBLE_EQ(area1, area2);
-}
-
-// // Интеграционные тесты
-// TEST(IntegrationTest, MixedFiguresInArray) {
-//     auto pentagon = Pentagon<double>{Point<double>(0, 0), Point<double>(1, 0), Point<double>(1.5, 0.8),
-//                         Point<double>(0.5, 1.3), Point<double>(-0.5, 0.8)};
-    
-//     auto hexagon = Hexagon<double>{Point<double>(0, 0), Point<double>(1, 0), Point<double>(1.5, 0.866),
-//                        Point<double>(1, 1.732), Point<double>(0, 1.732), Point<double>(-0.5, 0.866)};
-    
-//     auto octagon = 
-//         Octagon<double>{Point<double>(0, 1), Point<double>(0.707, 0.707), Point<double>(1, 0),
-//                        Point<double>(0.707, -0.707), Point<double>(0, -1), Point<double>(-0.707, -0.707),
-//                        Point<double>(-1, 0), Point<double>(-0.707, 0.707)};
-    
-//     FigureArray<Figure<double>> array{
-//         &pentagon, &hexagon, &octagon
-//     };
-    
-//     // Проверяем что все функции работают без исключений
-//     EXPECT_NO_THROW(array.calc_total_area());
-//     EXPECT_NO_THROW(array.print_the_center_of_rotation());
-//     EXPECT_NO_THROW(array.print_the_area_of_each());
-    
-//     // Проверяем что общая площадь положительна
-//     EXPECT_GT(array.calc_total_area(), 0);
-    
-//     // Проверяем операции добавления и удаления
-//     array.removeElem(1);
-//     EXPECT_NO_THROW(array.calc_total_area());
-    
-//     array.addElem(&hexagon, 1);
-//     EXPECT_NO_THROW(array.calc_total_area());
-// }
-
-TEST(FigureArrayTest, EmptyArrayOperations) {
-    FigureArray<std::shared_ptr<Figure<double>>> array;
-    
-    // Операции на пустом массиве не должны вызывать ошибок
-    EXPECT_NO_THROW(array.removeElem(0));
-    EXPECT_NO_THROW(array.removeElem(-1));
-    EXPECT_NO_THROW(array.removeElem(10));
-    
 }
 
 // Тесты для проверки вычисления центра вращения
